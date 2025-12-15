@@ -32,3 +32,10 @@ yarn-error.log*
 # Docker Netinstall
 docker-netinstall/packages/*.npk
 docker-netinstall/vnc-password
+
+# Router-specific configurations (private)
+ros/LUIS*
+ros/README.md
+
+# Claude Code configuration
+.claude/

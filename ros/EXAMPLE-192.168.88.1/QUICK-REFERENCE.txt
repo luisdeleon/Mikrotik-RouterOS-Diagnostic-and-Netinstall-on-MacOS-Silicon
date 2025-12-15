@@ -1,0 +1,142 @@
+================================================================================
+QUICK REFERENCE - Example Router (192.168.88.1)
+================================================================================
+
+CONNECT
+--------
+ssh -p 2222 admin@192.168.88.1
+http://192.168.88.1
+WinBox: 192.168.88.1
+
+BACKUP & RESTORE
+----------------
+# Create backup
+/export file=backup
+/system backup save name=backup
+
+# Restore backup
+/system backup load name=backup
+/import file=backup.rsc
+
+APPLY OPTIMIZATIONS
+-------------------
+# 1. Upload scripts via SCP
+scp BACKUP-FIRST.rsc admin@192.168.88.1:/
+scp EXAMPLE-192.168.88.1-optimization.rsc admin@192.168.88.1:/
+scp VERIFY-OPTIMIZATION.rsc admin@192.168.88.1:/
+
+# 2. Create backup
+/import file=BACKUP-FIRST.rsc
+
+# 3. Apply optimizations
+/import file=EXAMPLE-192.168.88.1-optimization.rsc
+
+# 4. Verify
+/import file=VERIFY-OPTIMIZATION.rsc
+
+SYSTEM INFO
+-----------
+/system resource print
+/system routerboard print
+/system identity print
+/system package print
+/system license print
+
+INTERFACES
+----------
+/interface print stats
+/interface ethernet print
+/interface/wifi print
+/ip address print
+
+FIREWALL
+--------
+/ip firewall filter print
+/ip firewall nat print
+/ip firewall connection tracking print
+
+MONITORING
+----------
+/log print
+/tool bandwidth-server print
+/tool traffic-monitor
+
+WiFi
+----
+/interface/wifi print
+/interface/wifi access-list print
+/interface/wifi channel print
+
+SERVICES
+--------
+/ip service print
+/ip ssh print
+/user print
+
+ROUTING
+-------
+/ip route print
+/routing bgp peer print
+/routing ospf neighbor print
+
+QUEUES (QoS)
+------------
+/queue tree print
+/queue simple print
+
+DNS
+---
+/ip dns print
+/ip dns cache print
+
+TROUBLESHOOTING
+---------------
+# Check logs
+/log print where topics~"error,critical,warning"
+
+# Monitor resources
+/system resource monitor
+
+# Test connectivity
+/ping 8.8.8.8 count=5
+/tool traceroute 8.8.8.8
+
+# Check active connections
+/ip firewall connection print
+
+# Bandwidth test
+/tool bandwidth-test address=192.168.88.2
+
+RESET
+-----
+# Soft reset (keeps config)
+/system reboot
+
+# Factory reset (CAUTION!)
+/system reset-configuration no-defaults=yes
+
+UPDATES
+-------
+/system package update check-for-updates
+/system package update download
+/system package update install
+
+================================================================================
+COMMON ISSUES
+================================================================================
+
+Can't connect to SSH?
+  - Port changed to 2222: ssh -p 2222 admin@192.168.88.1
+  - IP restrictions: Must connect from 192.168.88.0/24
+
+Slow internet?
+  - Check QoS settings: /queue tree print
+  - Monitor CPU: /system resource print
+  - Check connections: /ip firewall connection print count-only
+
+WiFi issues?
+  - Check channel: /interface/wifi channel print
+  - Check clients: /interface/wifi registration-table print
+  - Scan channels: /interface/wifi scan wlan-2g
+
+================================================================================
