@@ -24,7 +24,7 @@ A comprehensive toolkit for MikroTik RouterOS management on macOS (especially Ap
 - 🚀 Performance analysis and optimization recommendations
 - 📝 Generate optimization scripts automatically
 - 🔌 Support for SSH, VPN, and ZeroTier connections
-- 🎯 Filter by router name or group (WIFILINK, WISP, PAC, etc.)
+- 🎯 Filter by router name or group
 - 💻 Claude Code integration with slash commands
 
 #### Netinstall for macOS Silicon
@@ -70,11 +70,11 @@ npm run list
 npm start
 
 # Run diagnostics on specific router
-npm start -- --router "LUIS - 10.10.39.1"
+npm start -- --router "Office Router - 192.168.1.1"
 
 # Use Claude Code slash commands
 /diagnose
-/diagnose-router LUIS - 10.10.39.1
+/diagnose-router Office Router - 192.168.1.1
 /system-check
 ```
 
@@ -82,7 +82,7 @@ npm start -- --router "LUIS - 10.10.39.1"
 
 ```bash
 # Generate optimization package for a router
-npm run optimize -- --router "LUIS - 10.10.39.1"
+npm run optimize -- --router "Office Router - 192.168.1.1"
 
 # This creates:
 # - /ros/ROUTER-NAME/ROUTER-IP-optimization.rsc
@@ -206,7 +206,7 @@ Un conjunto de herramientas completo para la gestión de MikroTik RouterOS en ma
 - 🚀 Análisis de rendimiento y recomendaciones de optimización
 - 📝 Generar scripts de optimización automáticamente
 - 🔌 Soporte para conexiones SSH, VPN y ZeroTier
-- 🎯 Filtrar por nombre de router o grupo (WIFILINK, WISP, PAC, etc.)
+- 🎯 Filtrar por nombre de router o grupo
 - 💻 Integración con Claude Code mediante comandos slash
 
 #### Netinstall para macOS Silicon
@@ -252,11 +252,11 @@ npm run list
 npm start
 
 # Ejecutar diagnósticos en un router específico
-npm start -- --router "LUIS - 10.10.39.1"
+npm start -- --router "Router Oficina - 192.168.1.1"
 
 # Usar comandos slash de Claude Code
 /diagnose
-/diagnose-router LUIS - 10.10.39.1
+/diagnose-router Router Oficina - 192.168.1.1
 /system-check
 ```
 
@@ -264,7 +264,7 @@ npm start -- --router "LUIS - 10.10.39.1"
 
 ```bash
 # Generar paquete de optimización para un router
-npm run optimize -- --router "LUIS - 10.10.39.1"
+npm run optimize -- --router "Router Oficina - 192.168.1.1"
 
 # Esto crea:
 # - /ros/NOMBRE-ROUTER/IP-ROUTER-optimization.rsc
@@ -388,7 +388,7 @@ Um conjunto de ferramentas completo para gerenciamento de MikroTik RouterOS no m
 - 🚀 Análise de desempenho e recomendações de otimização
 - 📝 Gerar scripts de otimização automaticamente
 - 🔌 Suporte para conexões SSH, VPN e ZeroTier
-- 🎯 Filtrar por nome de roteador ou grupo (WIFILINK, WISP, PAC, etc.)
+- 🎯 Filtrar por nome de roteador ou grupo
 - 💻 Integração com Claude Code através de comandos slash
 
 #### Netinstall para macOS Silicon
@@ -434,11 +434,11 @@ npm run list
 npm start
 
 # Executar diagnósticos em roteador específico
-npm start -- --router "LUIS - 10.10.39.1"
+npm start -- --router "Roteador Escritorio - 192.168.1.1"
 
 # Usar comandos slash do Claude Code
 /diagnose
-/diagnose-router LUIS - 10.10.39.1
+/diagnose-router Roteador Escritorio - 192.168.1.1
 /system-check
 ```
 
@@ -446,7 +446,7 @@ npm start -- --router "LUIS - 10.10.39.1"
 
 ```bash
 # Gerar pacote de otimização para um roteador
-npm run optimize -- --router "LUIS - 10.10.39.1"
+npm run optimize -- --router "Roteador Escritorio - 192.168.1.1"
 
 # Isso cria:
 # - /ros/NOME-ROTEADOR/IP-ROTEADOR-optimization.rsc

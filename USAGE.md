@@ -25,7 +25,7 @@ npm run diagnose:routing
 ### Run diagnostics on a specific router
 
 ```bash
-npm start -- --router "WIFILINK - GUADALUPE"
+npm start -- --router "Office Router - 192.168.1.1"
 ```
 
 ### List all routers
@@ -51,7 +51,7 @@ Run full diagnostics on all configured routers.
 Run diagnostics on a specific router. Claude will ask which router to diagnose.
 
 ### `/diagnose-group`
-Run diagnostics on all routers in a specific group (e.g., WIFILINK, WISP, PAC, etc.).
+Run diagnostics on all routers in a specific group.
 
 ### `/list-routers`
 Display all configured routers organized by group.
@@ -71,22 +71,17 @@ Use the filter script to run diagnostics on a specific group:
 
 ```bash
 # Filter by group
-node filter-routers-by-group.js WIFILINK
+node filter-routers-by-group.js OFFICE
 
 # Then run diagnostics on the filtered config
 npm start -- --config routers-temp.json
 ```
 
-Available groups:
-- **WIFILINK** (11 routers) - WiFiLink network sites
-- **WISP** (8 routers) - WISP infrastructure
-- **PAC** (6 routers) - PAC network sites
-- **SARTEK** (5 routers) - Sartek locations
-- **LUIS** (4 routers) - Personal routers
-- **MONSTER** (3 routers) - Monster network
-- **WEBZY** (2 routers) - Webzy sites
-- **SMARTWIFI** (1 router) - SmartWiFi location
-- **LAWNDALE** (1 router) - Lawndale site
+Example groups:
+- **OFFICE** - Office routers
+- **REMOTE** - Remote site routers
+- **DATACENTER** - Datacenter equipment
+- **BRANCH** - Branch office locations
 
 ## Advanced Usage
 
@@ -100,10 +95,10 @@ npm start -- --config /path/to/custom-config.json
 
 ```bash
 # System diagnostics on specific router
-npm start -- --router "LUIS - 10.10.30.1" --category system
+npm start -- --router "Office Router - 192.168.1.1" --category system
 
 # Routing diagnostics on group
-node filter-routers-by-group.js PAC
+node filter-routers-by-group.js OFFICE
 npm start -- --config routers-temp.json --category routing
 ```
 

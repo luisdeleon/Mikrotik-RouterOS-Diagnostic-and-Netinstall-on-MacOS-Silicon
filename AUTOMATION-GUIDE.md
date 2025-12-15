@@ -10,10 +10,10 @@ Complete guide for using the automated router optimization tool that handles dia
 
 ```bash
 # Generate optimization package for a router
-npm run optimize -- --router "LUIS - 10.10.39.1"
+npm run optimize -- --router "Office Router - 192.168.1.1"
 
 # Or use the slash command
-/optimize-router LUIS - 10.10.39.1
+/optimize-router Office Router - 192.168.1.1
 ```
 
 This will automatically:
@@ -30,9 +30,9 @@ This will automatically:
 After running the automation, you'll have a complete package:
 
 ```
-/ros/LUIS-10.10.39.1/
+/ros/Office-Router-192.168.1.1/
 ├── BACKUP-FIRST.rsc              # Backup script
-├── LUIS-10.10.39.1-optimization.rsc  # Customized optimization
+├── Office-Router-192.168.1.1-optimization.rsc  # Customized optimization
 ├── VERIFY-OPTIMIZATION.rsc       # Post-optimization verification
 ├── REMOVE-*.rsc                  # Cleanup scripts (as needed)
 ├── README.md                     # Complete guide (8+ KB)
@@ -49,29 +49,29 @@ After running the automation, you'll have a complete package:
 
 ```bash
 # Generate scripts only (no auto-apply)
-npm run optimize -- --router "LUIS - 10.10.39.1"
+npm run optimize -- --router "Office Router - 192.168.1.1"
 ```
 
 ### Advanced Usage
 
 ```bash
 # Generate and auto-apply to router
-npm run optimize -- --router "LUIS - 10.10.39.1" --apply
+npm run optimize -- --router "Office Router - 192.168.1.1" --apply
 
 # Specify custom WAN speed for QoS
-npm run optimize -- --router "LUIS - 10.10.39.1" --wan-speed 200M
+npm run optimize -- --router "Office Router - 192.168.1.1" --wan-speed 200M
 
 # Skip backup (not recommended!)
-npm run optimize -- --router "LUIS - 10.10.39.1" --skip-backup --apply
+npm run optimize -- --router "Office Router - 192.168.1.1" --skip-backup --apply
 ```
 
 ### Using Slash Commands
 
 ```bash
 # In Claude Code CLI
-/optimize-router LUIS - 10.10.39.1
-/optimize-router WISP - KAMA DFW00
-/optimize-router WIFILINK - GUADALUPE
+/optimize-router Office Router - 192.168.1.1
+/optimize-router Branch Router - 10.0.1.1
+/optimize-router Remote Site - 172.16.1.1
 ```
 
 ---
@@ -157,12 +157,12 @@ If `--apply` flag is used:
 ║     Automated Router Optimization Tool                    ║
 ╚════════════════════════════════════════════════════════════╝
 
-✓ Loaded configuration for LUIS - 10.10.39.1
+✓ Loaded configuration for Office Router - 192.168.1.1
 ✓ Diagnostics completed
 
   System Information:
-    Board: hAP ac^3
-    Version: 7.20.4
+    Board: hAP ac³
+    Version: 7.20.6
     CPU Load: 16%
     Memory: 129.1MiB / 256.0MiB
 
@@ -171,9 +171,8 @@ If `--apply` flag is used:
 
   Generated files:
     ✓ BACKUP-FIRST.rsc
-    ✓ LUIS-10.10.39.1-optimization.rsc
+    ✓ Office-Router-192.168.1.1-optimization.rsc
     ✓ VERIFY-OPTIMIZATION.rsc
-    ✓ REMOVE-back-to-home-vpn.rsc
 
 ✓ Documentation generated
     ✓ README.md
@@ -182,25 +181,25 @@ If `--apply` flag is used:
     ✓ ROUTER-INFO.txt
 
 ✓ Optimization package created successfully!
-Location: /Users/luisdeleon/Development/RouterOs/ros/LUIS-10.10.39.1
+Location: /ros/Office-Router-192.168.1.1
 
 📋 Next Steps:
 
 1. Review the generated scripts and documentation:
-   cd /Users/luisdeleon/Development/RouterOs/ros/LUIS-10.10.39.1
+   cd /ros/Office-Router-192.168.1.1
    cat README.md
 
 2. Upload scripts to router:
-   scp *.rsc admin@10.10.39.1:/
+   scp *.rsc admin@192.168.1.1:/
 
 3. Connect to router and apply:
-   ssh admin@10.10.39.1
+   ssh admin@192.168.1.1
    /import BACKUP-FIRST.rsc
-   /import LUIS-10.10.39.1-optimization.rsc
+   /import Office-Router-192.168.1.1-optimization.rsc
    /import VERIFY-OPTIMIZATION.rsc
 
 Or run with --apply flag to auto-apply:
-   npm run optimize -- --router "LUIS - 10.10.39.1" --apply
+   npm run optimize -- --router "Office Router - 192.168.1.1" --apply
 ```
 
 ---
@@ -215,11 +214,11 @@ Optimize multiple routers:
 
 # List of routers to optimize
 routers=(
-  "LUIS - 10.10.39.1"
-  "WISP - KAMA DFW00"
-  "WIFILINK - GUADALUPE"
-  "WIFILINK - HOME PAC"
-  "PAC - 10.24.16.1"
+  "Office Router - 192.168.1.1"
+  "Branch Office - 10.0.1.1"
+  "Remote Site A - 172.16.1.1"
+  "Remote Site B - 172.16.2.1"
+  "Datacenter Router - 10.1.1.1"
 )
 
 for router in "${routers[@]}"; do
