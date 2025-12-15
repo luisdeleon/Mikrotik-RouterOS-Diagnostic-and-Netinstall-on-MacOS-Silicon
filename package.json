@@ -1,0 +1,39 @@
+{
+  "name": "routeros",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "routeros-diag": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "diagnose": "npm run build && node dist/index.js",
+    "diagnose:system": "npm run build && node dist/index.js --category system",
+    "diagnose:interfaces": "npm run build && node dist/index.js --category interfaces",
+    "diagnose:routing": "npm run build && node dist/index.js --category routing",
+    "list": "node -e \"const c=require('./routers.json');c.routers.forEach(r=>console.log(r.name))\"",
+    "groups": "node -e \"const c=require('./routers.json');const g={};c.routers.forEach(r=>{const n=r.name.split(' - ')[0];g[n]=(g[n]||0)+1});Object.entries(g).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>console.log(k.padEnd(15),v,'router(s)'))\"",
+    "auto-optimize": "tsx auto-optimize-router.ts",
+    "optimize": "tsx auto-optimize-router.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.0.2",
+    "@types/ssh2": "^1.15.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.2",
+    "ora": "^9.0.0",
+    "ssh2": "^1.17.0"
+  }
+}

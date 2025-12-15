@@ -1,0 +1,25 @@
+{
+  "routers": [
+    {
+      "name": "Office Router",
+      "host": "192.168.1.1",
+      "port": 22,
+      "username": "admin",
+      "password": "your-password-here"
+    },
+    {
+      "name": "Remote Site (VPN)",
+      "host": "10.0.0.1",
+      "port": 22,
+      "username": "admin",
+      "password": "your-password-here"
+    },
+    {
+      "name": "ZeroTier Router",
+      "host": "10.147.20.50",
+      "port": 22,
+      "username": "admin",
+      "password": "your-password-here"
+    }
+  ]
+}

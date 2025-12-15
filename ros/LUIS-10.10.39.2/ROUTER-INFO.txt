@@ -1,0 +1,291 @@
+================================================================================
+ROUTER INFORMATION CARD
+================================================================================
+
+BASIC INFORMATION
+-----------------
+Router Name:        pachome-hapac2
+IP Address:         10.10.39.2
+SSH Port:           22 (will change to 2222 after optimization)
+Default Username:   admin
+Access:             Local network (10.10.39.0/24)
+Role:               Access Point / Managed Switch
+
+HARDWARE DETAILS
+----------------
+Board Name:         hAP ac^2
+Model:              RBD52G-5HacD2HnD
+Architecture:       ARM (dual-core)
+CPU:                Dual-core ARM
+Memory:             128 MB
+Storage:            16 MB NAND
+Device Role:        Access Point (not gateway)
+
+FIRMWARE
+--------
+RouterOS Version:   7.16.1 (stable)
+Package:            wifi-qcom-ac v7.16.1
+Recommended:        Upgrade to 7.20.4+ for latest WiFi improvements
+
+NETWORK CONFIGURATION
+---------------------
+Role:               Access Point
+Connection:         Connected to main router via ethernet
+LAN Network:        10.10.39.0/24 (managed by main router)
+Management IP:      10.10.39.2/24
+
+INTERFACES
+----------
+wlan-2g             2.4GHz WiFi Access Point                Running
+wlan-5g             5GHz WiFi Access Point                  Running
+ether1-master       Master port (connection to network)     Running
+ether2-slave        Slave port                              Running
+ether3-slave        Slave port                              Running
+ether4-slave        Slave port                              Running
+ether5-slave        Slave port (PoE-out capable)           Running
+
+WIFI CONFIGURATION
+------------------
+2.4GHz Radio:
+  Interface:        wlan-2g
+  SSID:             SatLink-2G
+  Security:         WPA2-PSK (will upgrade to WPA3)
+  Password:         anabela2013
+  Country:          United States
+  Channel Width:    20/40MHz (ISSUE - will fix to 20MHz)
+  Channels:         1, 6, 11 recommended
+  Current Issue:    Many clients with weak signals
+
+5GHz Radio:
+  Interface:        wlan-5g
+  SSID:             SatLink-5G
+  Security:         WPA2-PSK (will upgrade to WPA3)
+  Password:         anabela2013
+  Country:          United States
+  Channel Width:    20/40/80MHz
+  Band:             5GHz-AC
+  Current Issue:    Should have more clients (band steering needed)
+
+WIFI CLIENTS (at diagnostic time)
+----------------------------------
+Total Clients:      14 connected
+2.4GHz Clients:     Most clients on 2.4GHz
+5GHz Clients:       Few clients on 5GHz
+Weak Signals:       14 clients with signals -87 to -99 dBm (CRITICAL)
+Band Distribution:  Poor - too many on 2.4GHz with weak signals
+
+SIGNAL QUALITY BREAKDOWN
+-------------------------
+Excellent (>-60 dBm):     0 clients
+Good (-60 to -70 dBm):    0 clients
+Fair (-70 to -80 dBm):    0 clients
+Poor (-80 to -90 dBm):    10 clients
+Very Poor (<-90 dBm):     4 clients
+
+WIFI ACCESS LIST (Blocked Devices)
+-----------------------------------
+Several Amazon Echo devices blocked from 2.4GHz
+(Access list configured to reject specific MAC addresses)
+
+PERFORMANCE METRICS
+-------------------
+CPU Load:           Low (access point role)
+Memory Usage:       Moderate
+Uptime:             Variable (power outage history)
+Storage:            Adequate
+
+ISSUES IDENTIFIED
+-----------------
+CRITICAL:
+1. Very weak WiFi signals on all 14 clients (-87 to -99 dBm)
+   Impact: Poor performance, frequent disconnects, slow speeds
+   Solution: Fix channel width, improve power settings, AP repositioning
+
+2. 2.4GHz using 20/40MHz width
+   Impact: Instability, interference, channel overlap
+   Solution: Force 20MHz width for 2.4GHz
+
+MAJOR:
+3. Poor band steering / client distribution
+   Impact: Capable devices stuck on 2.4GHz with poor performance
+   Solution: Enable band steering, encourage 5GHz usage
+
+4. Login failures in logs
+   Impact: Security concern, possible brute force attempts
+   Solution: Harden security, change SSH port, restrict access
+
+5. Power outage history
+   Impact: Reliability concerns, lost configuration risk
+   Solution: Enable watchdog, ensure UPS power if possible
+
+MODERATE:
+6. Old firmware (7.16.1)
+   Impact: Missing latest WiFi improvements and bug fixes
+   Solution: Upgrade to 7.20.4 or later (after testing)
+
+7. WPA2 only (no WPA3)
+   Impact: Less secure than modern standards
+   Solution: Enable WPA3 with WPA2 fallback
+
+LOW:
+8. No automated monitoring
+   Impact: Issues not detected proactively
+   Solution: Add WiFi monitoring script
+
+OPTIMIZATION PRIORITY
+---------------------
+Priority 1: Fix 2.4GHz channel width (20MHz only)
+Priority 2: Improve WiFi signal strength (power/placement)
+Priority 3: Enable band steering
+Priority 4: Security hardening (SSH, access restrictions)
+Priority 5: Enable WPA3 security
+Priority 6: Add monitoring and alerting
+Priority 7: System stability (watchdog)
+
+ROOT CAUSES ANALYSIS
+--------------------
+Weak WiFi Signals:
+  - Possible Causes:
+    1. AP mounted in poor location (too low, corner, etc.)
+    2. Channel width causing interference (20/40MHz)
+    3. Power settings too conservative
+    4. Physical obstructions (walls, furniture)
+    5. Distance from clients too far
+  - Solutions:
+    1. Optimize channel settings (force 20MHz)
+    2. Adjust transmit power if needed
+    3. Consider AP repositioning or additional APs
+    4. Enable band steering to move clients to 5GHz
+
+Poor Band Distribution:
+  - Possible Causes:
+    1. No band steering enabled
+    2. Devices defaulting to 2.4GHz
+    3. 5GHz signal weaker/coverage smaller
+  - Solutions:
+    1. Enable band steering
+    2. Optimize 5GHz configuration
+    3. Educate users to prefer 5GHz
+
+EXPECTED RESULTS AFTER OPTIMIZATION
+------------------------------------
+Weak Signal Clients:    < 5 (from 14) - 65%+ improvement
+2.4GHz Channel Width:   20MHz fixed (from 20/40MHz)
+Band Distribution:      More balanced (more 5GHz clients)
+Security Score:         High (from Medium)
+WiFi Stability:         Improved significantly
+Disconnects:            Minimal (from frequent)
+Login Failures:         Stopped (SSH hardened)
+Monitoring:             Active (proactive alerts)
+
+RECOMMENDATIONS
+---------------
+IMMEDIATE:
+1. Apply optimization script
+2. Monitor WiFi client signals for 24 hours
+3. Identify persistent weak signal areas
+
+SHORT-TERM:
+4. Consider AP repositioning if weak signals persist
+5. Upgrade firmware to 7.20.4 (after backup)
+6. Add UPS power if not present
+
+LONG-TERM:
+7. Deploy additional APs if coverage gaps remain
+8. Create WiFi heat map to identify dead zones
+9. Regular monitoring of client distribution
+
+PHYSICAL PLACEMENT TIPS
+------------------------
+Current:            Unknown (likely suboptimal given weak signals)
+Recommended:
+  - Mount at ceiling height or high on wall
+  - Central location in coverage area
+  - Away from metal objects and appliances
+  - Minimize walls between AP and clients
+  - Consider separate APs for different floors
+
+USEFUL COMMANDS
+---------------
+WiFi Clients:       /interface/wifi/registration-table print
+WiFi Monitor:       /interface/wifi monitor wlan-2g,wlan-5g
+Site Survey:        /interface/wifi scan wlan-2g duration=10s
+Signal Check:       /interface/wifi/registration-table print where signal<-75
+System Status:      /system resource print
+Check Logs:         /log print where topics~"wireless|error"
+
+ACCESS INFORMATION (AFTER OPTIMIZATION)
+---------------------------------------
+SSH:                ssh -p 2222 admin@10.10.39.2
+WinBox:             10.10.39.2:8291
+WebFig:             http://10.10.39.2
+Access Restricted:  Local network only (10.10.39.0/24)
+
+DOCUMENTATION
+-------------
+Main README:        README.md (detailed guide)
+Backup Script:      BACKUP-FIRST.rsc
+Optimization:       LUIS-10.10.39.2-optimization.rsc
+Verification:       VERIFY-OPTIMIZATION.rsc
+Quick Reference:    QUICK-REFERENCE.txt
+
+BACKUP FILES LOCATION
+---------------------
+Local:              /Users/luisdeleon/Development/RouterOs/ros/LUIS-10.10.39.2/
+Router:             After running BACKUP-FIRST.rsc
+Format:             backup-pachome-hapac2-10.10.39.2-YYYY-MM-DD-HH:MM:SS.rsc
+                    backup-pachome-hapac2-10.10.39.2-YYYY-MM-DD-HH:MM:SS.backup
+
+MAINTENANCE SCHEDULE
+--------------------
+Daily:
+  - Check WiFi client count and signal levels
+  - Review logs for connection issues
+
+Weekly:
+  - Review monitoring script output
+  - Check for firmware updates
+  - Verify band distribution is healthy
+
+Monthly:
+  - Run site survey to check for new interference
+  - Review and update optimization if needed
+  - Verify backups are current
+
+Quarterly:
+  - Full configuration backup
+  - Performance benchmarking
+  - Consider firmware upgrade
+
+SUPPORT CONTACT
+---------------
+MikroTik Support:   https://mikrotik.com/support
+Wiki:               https://wiki.mikrotik.com/
+Forum:              https://forum.mikrotik.com/
+WiFi Guide:         https://help.mikrotik.com/docs/display/ROS/WiFi
+
+NETWORK TOPOLOGY
+----------------
+Internet
+   |
+Main Router (10.10.39.1)
+   |
+   ├─── [ethernet] ──> pachome-hapac2 (10.10.39.2) - THIS DEVICE
+   |                    ├─── 2.4GHz WiFi (SatLink-2G)
+   |                    └─── 5GHz WiFi (SatLink-5G)
+   |
+   └─── Other devices on 10.10.39.0/24 network
+
+POWER REQUIREMENTS
+------------------
+Power Input:        24V PoE or DC adapter
+PoE Standard:       Passive PoE
+Power Consumption:  Low (access point mode)
+UPS Recommended:    Yes (given power outage history)
+
+================================================================================
+Last Diagnostic:    2025-12-14
+Script Version:     1.0
+Generated By:       RouterOS Diagnostic Tool
+Device Role:        Access Point
+================================================================================

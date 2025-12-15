@@ -1,0 +1,13 @@
+services:
+  netinstall:
+    build: .
+    container_name: mikrotik-netinstall
+    privileged: true
+    network_mode: host
+    volumes:
+      - ./packages:/packages:ro
+      - ./vnc-password:/root/.vnc/passwd:ro
+    environment:
+      - DISPLAY=:0
+    stdin_open: true
+    tty: true
