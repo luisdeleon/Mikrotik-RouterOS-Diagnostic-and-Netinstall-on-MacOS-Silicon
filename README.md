@@ -182,7 +182,6 @@ RouterOs/
 - [USAGE.md](./USAGE.md) - Detailed usage guide
 - [AUTOMATION-GUIDE.md](./AUTOMATION-GUIDE.md) - Auto-optimization guide
 - [docker-netinstall/README.md](./docker-netinstall/README.md) - Netinstall guide
-- [CLAUDE_CODE_SETUP.md](./CLAUDE_CODE_SETUP.md) - Claude Code integration
 
 ---
 
@@ -364,7 +363,6 @@ RouterOs/
 - [USAGE.md](./USAGE.md) - Guía de uso detallada
 - [AUTOMATION-GUIDE.md](./AUTOMATION-GUIDE.md) - Guía de auto-optimización
 - [docker-netinstall/README.md](./docker-netinstall/README.md) - Guía de Netinstall
-- [CLAUDE_CODE_SETUP.md](./CLAUDE_CODE_SETUP.md) - Integración con Claude Code
 
 ---
 
@@ -546,7 +544,6 @@ RouterOs/
 - [USAGE.md](./USAGE.md) - Guia de uso detalhado
 - [AUTOMATION-GUIDE.md](./AUTOMATION-GUIDE.md) - Guia de auto-otimização
 - [docker-netinstall/README.md](./docker-netinstall/README.md) - Guia de Netinstall
-- [CLAUDE_CODE_SETUP.md](./CLAUDE_CODE_SETUP.md) - Integração com Claude Code
 
 ---
 
